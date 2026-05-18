@@ -81,14 +81,18 @@ body.cv-en .resume-header {
 .resume-header-shell {
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "main aside"
+    "links links";
+  align-items: start;
   gap: 2rem;
   padding: 1.5rem 1.5rem 2.25rem;
 }
 
 .resume-header-main {
+  grid-area: main;
   display: flex;
   align-items: flex-start;
   gap: 1.4rem;
@@ -226,19 +230,47 @@ body.cv-en .resume-header {
 }
 
 .resume-header-aside {
-  flex: 0 0 320px;
+  grid-area: aside;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 0.6rem;
   padding-top: 0.1rem;
+}
+
+.header-links-layout {
+  grid-area: links;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: start;
+  align-items: start;
+  gap: 1.1rem;
+  border-top: 1px solid var(--cv-border);
+  padding-top: 0.85rem;
+  margin-top: -0.35rem;
 }
 
 .header-contact-panel,
 .header-social-panel {
   width: 100%;
-  max-width: 320px;
+  max-width: none;
+}
+
+.header-contact-panel .header-panel-title,
+.header-social-panel .header-panel-title {
+  margin-bottom: 0;
+}
+
+.header-contact,
+.header-social {
+  margin-top: 0.45rem;
+}
+
+.header-contact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
 }
 
 .header-panel-title {
@@ -283,10 +315,15 @@ body.cv-en .resume-header {
 
 .header-social {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.65rem;
   width: 100%;
-  max-width: 320px;
+  max-width: none;
+}
+
+.header-contact-panel .header-social-link,
+.header-social-panel .header-social-link {
+  width: 100%;
 }
 
 .header-social-link {
@@ -300,10 +337,12 @@ body.cv-en .resume-header {
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
   color: var(--cv-text) !important;
   text-decoration: none;
-  font-size: 0.86rem;
+  font-size: 0.83rem;
   font-weight: 600;
   white-space: normal;
   overflow-wrap: anywhere;
+  line-height: 1.35;
+  min-height: 44px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -549,6 +588,11 @@ body.cv-en .resume-timeline-item-desc {
   .resume-header-shell {
     padding: 1.2rem 1.2rem 1.8rem;
     gap: 1.2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "aside"
+      "main"
+      "links";
   }
 
   .resume-header-main {
@@ -564,8 +608,13 @@ body.cv-en .resume-timeline-item-desc {
 
   .resume-header-aside {
     width: 100%;
-    align-items: flex-start;
-    flex-basis: auto;
+    align-items: flex-end;
+  }
+
+  .header-links-layout {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin-top: 0;
   }
 
   .header-contact-panel,
