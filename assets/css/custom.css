@@ -1,13 +1,29 @@
 /* Shared visual upgrades for both CV pages */
 :root {
-  --cv-bg-1: #f5efe4;
-  --cv-bg-2: #eef3fb;
+  --cv-bg-1: #f4f6fb;
+  --cv-bg-2: #ecf2ff;
   --cv-accent: #0f2747;
   --cv-accent-2: #b08a3c;
   --cv-text: #1e293b;
   --cv-muted: #64748b;
   --cv-card: rgba(255, 255, 255, 0.98);
   --cv-border: rgba(15, 39, 71, 0.08);
+}
+
+body.cv-tr {
+  --cv-bg-1: #f6efe3;
+  --cv-bg-2: #edf3fd;
+  --cv-accent: #0f2747;
+  --cv-accent-2: #b08a3c;
+  --cv-card: rgba(255, 255, 255, 0.97);
+}
+
+body.cv-en {
+  --cv-bg-1: #eaf0ff;
+  --cv-bg-2: #e6f7f8;
+  --cv-accent: #1a365f;
+  --cv-accent-2: #2d7a9b;
+  --cv-card: rgba(255, 255, 255, 0.985);
 }
 
 html,
@@ -41,11 +57,25 @@ body {
   backdrop-filter: blur(10px);
 }
 
+body.cv-en .resume-wrapper-inner {
+  border-radius: 26px;
+  box-shadow:
+    0 0 1px rgba(15, 23, 42, 0.08),
+    0 14px 34px rgba(26, 54, 95, 0.14),
+    0 40px 90px rgba(45, 122, 155, 0.16);
+}
+
 .resume-header {
   position: relative;
   background: linear-gradient(135deg, #fbfcfe 0%, #f0f5fb 50%, #f5efe4 100%);
   color: var(--cv-text);
+  height: auto;
+  min-height: 220px;
   border-bottom: 1px solid var(--cv-border);
+}
+
+body.cv-en .resume-header {
+  background: linear-gradient(135deg, #f5f9ff 0%, #ebf2ff 45%, #e9f8fb 100%);
 }
 
 .resume-header-shell {
@@ -196,13 +226,28 @@ body {
 }
 
 .resume-header-aside {
-  flex: 0 0 270px;
+  flex: 0 0 320px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem;
   padding-top: 0.1rem;
+}
+
+.header-contact-panel,
+.header-social-panel {
+  width: 100%;
+  max-width: 320px;
+}
+
+.header-panel-title {
+  margin-bottom: 0.55rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  color: var(--cv-accent);
 }
 
 .header-lang-switch {
@@ -238,10 +283,10 @@ body {
 
 .header-social {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.65rem;
   width: 100%;
-  max-width: 270px;
+  max-width: 320px;
 }
 
 .header-social-link {
@@ -255,11 +300,10 @@ body {
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
   color: var(--cv-text) !important;
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -280,6 +324,15 @@ body {
   border-radius: 50%;
   background: rgba(15, 39, 71, 0.1);
   flex: 0 0 1.45rem;
+}
+
+body.cv-en .resume-section-content {
+  box-shadow: 0 16px 38px rgba(26, 54, 95, 0.09);
+}
+
+body.cv-en .resume-timeline-item-desc {
+  background: linear-gradient(135deg, rgba(241, 247, 255, 0.9), rgba(232, 248, 250, 0.55));
+  border-color: rgba(26, 54, 95, 0.14);
 }
 
 .resume-body {
@@ -513,6 +566,12 @@ body {
     width: 100%;
     align-items: flex-start;
     flex-basis: auto;
+  }
+
+  .header-contact-panel,
+  .header-social-panel,
+  .header-social {
+    max-width: none;
   }
 
   .header-social {
