@@ -269,7 +269,7 @@ body.cv-en .resume-header {
 
 .header-contact {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.65rem;
 }
 
@@ -332,7 +332,7 @@ body.cv-en .resume-header {
   gap: 0.4rem;
   padding: 0.48rem 0.6rem;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(15, 39, 71, 0.04), rgba(176, 138, 60, 0.01));
+  background: linear-gradient(135deg, rgba(15, 39, 71, 0.05), rgba(176, 138, 60, 0.01));
   border: 1px solid rgba(15, 39, 71, 0.14);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
   color: var(--cv-text) !important;
@@ -343,6 +343,8 @@ body.cv-en .resume-header {
   overflow-wrap: anywhere;
   line-height: 1.35;
   min-height: 44px;
+  padding-left: 0.74rem;
+  padding-right: 0.74rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
